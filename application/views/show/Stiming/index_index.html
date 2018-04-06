@@ -1,0 +1,41 @@
+<script type="text/javascript" language="JavaScript">
+
+    var startTime = new Date();
+    var endTime=startTime.getTime()+30*1000;
+    var g_blinkswitch = 0;
+    var g_blinktitle = document.title;
+    function getRemainTime(){
+
+        var nowTime = new Date();
+        var nMS =endTime - nowTime.getTime();
+        var nM=Math.floor(nMS/(1000*60)) % 60;
+        var nS=Math.floor(nMS/1000) % 60;
+        if(nM==0&&nS==0&&nMS<1000) //当倒计时结束
+        {
+            window.focus();
+            setInterval("blinkNewMsg()", 1000);
+            window.location.href='http://www.jiupinku.com/index.php?p=show&c=timing&a=timing';
+        }
+        if(nS < 10) nS = "0" + nS;
+
+        if(nMS >= 0){
+            document.getElementById("remainTime").innerHTML= nM + "分" + nS + "秒";
+
+            setTimeout("getRemainTime()",1000);
+        }
+
+    }
+
+    function blinkNewMsg()
+    {
+        document.title = g_blinkswitch % 2==0 ? "【　　　】 - " + g_blinktitle : "【新消息】 - " +
+            g_blinktitle;
+        g_blinkswitch++;
+    }
+
+
+    window.onload=getRemainTime;
+
+</script>
+
+<strong id="remainTime">30秒</strong>

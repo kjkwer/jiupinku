@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="public/pk/css/css.css" />
+    <script type="text/javascript" src="public/pk/js/jquery-1.9.1.min.js" ></script>
+    <title>刷新页面，请勿关闭</title>
+</head>
+<body>
+<script type="text/javascript">
+    function show(){
+        $.post("index.php?p=show&c=timing&a=test",{data:1})
+    }
+    setInterval(function(){
+        show()
+    },30000)
+</script>
+</body>
+</html>

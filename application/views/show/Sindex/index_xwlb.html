@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<?php include CUR_VIEW_PATH."Spublic/head.html";?>
+<body style="background:#f3f4f7;">
+
+<?php include CUR_VIEW_PATH."Spublic/header.html";?>
+<?php include CUR_VIEW_PATH."Spublic/nav.html";?>
+
+<div class="nei-banner">
+    <img src="public/pk/images/xinwen_02.jpg"/>
+</div>
+
+
+
+<div class="container">
+    <div class="xinwen">
+        <div class="xw-navs fl">
+            <h1>新闻动态</h1>
+            <ul class="xw-nav">
+                <li class="<?=$leixing==1?'on':''?>"><a href="index.php?p=show&c=index&a=xwlb&leixing=1">心得技巧</a></li>
+                <li class="<?=$leixing==2?'on':''?>"><a href="index.php?p=show&c=index&a=xwlb&leixing=2">业界动态</a></li>
+            </ul>
+        </div>
+        <div class="xw-rht fr">
+            <div class="mb-nav">
+                <a href="index.php?p=show&c=index&a=index"><img src="public/pk/images/index_03.png"/>首页</a>
+                <em>&gt;</em>
+                <?=$lx?>
+            </div>
+            <ul class="xw-list">
+                <?php if(!empty($wzDates)):?>
+                <?php foreach($wzDates as $wzDate):?>
+                <li>
+                    <div class="xw-biaoti"><a href="index.php?p=show&c=index&a=xwDetail&id=<?=$wzDate['id']?>"><?=$wzDate["biaoti"]?></a></div>
+                    <div class="xw-time"><?=$wzDate["dtime"]?></div>
+                    <div class="xw-nei">
+                        <?=$wzDate["jianjie"];  ?>
+                    </div>
+                </li>
+                <?php endforeach;?>
+                <?php endif;?>
+            </ul>
+            <div class="clear"></div>
+            <div class="page">
+                <p>
+                    <?php
+                        for($i=$init;$i<=$max;$i++){
+                            if($page == $i){
+                                    echo  "<strong>".$i."</strong>";
+                                }else{
+                                    echo  "<a href='index.php?p=show&c=index&a=xwlb&leixing=".$leixing."&page=".$i."'>".$i."</a>";
+                            }
+                        }
+                        echo  "<a href='index.php?p=show&c=index&a=xwlb&leixing=".$leixing."&page=".($page+1)."'>下一页</a>";
+                    ?>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--footer-->
+<div class="footer box">
+    <div class="container">
+        <p>温馨提醒：购买彩票有风险，在线投注须谨慎 不向未满18周岁的青少年出售彩票</p>
+        <p>Copyright © 2017-2018www.PK10.com All Rights Reserved.</p>
+    </div>
+</div>
+
+
+<?php include CUR_VIEW_PATH."Spublic/script.html";?>
+</body>
+</html>

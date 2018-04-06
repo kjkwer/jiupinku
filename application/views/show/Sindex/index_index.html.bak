@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html>
+<?php include CUR_VIEW_PATH."Spublic/head.html";?>
+<body style="background:#f3f4f7;">
+
+<?php include CUR_VIEW_PATH."Spublic/header.html";?>
+<?php include CUR_VIEW_PATH."Spublic/nav.html";?>
+
+<div class="new-haoma">
+    <div class="container box">
+        <div class="trophhy fl box" style='width:69px; height:69px; color:#fff; font-size:14px; border-radius:50%; background:#CF2542;text-align: center;  padding-top:15px;'>
+            <p>倒计时</p>
+            <span id="time"></span>
+        </div>
+        <div class="trophhy-text fl">
+            <p>PK10第<em><?=$qiShu?></em>期开奖号码</p>
+            <p><?=$mingCi?>正确率<em><?=$trueRate?></em></p>
+        </div>
+        <div class="number fr">
+            <?php if($numbers):?>
+                <?php foreach($numbers as $num):?>
+                    <span><?=$num?></span>
+                <?php endforeach;?>
+            <?php endif;?>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="kai-pk">
+        <p>最近百期pk10计划表</p>
+    </div>
+    <div class="kai-table">
+        <table>
+            <tr>
+                <th width="17%">期数</th>
+                <th width="32%">计划</th>
+                <th  width="17%">期</th>
+                <th  width="17%">—</th>
+                <th  width="17%">状态</th>
+            </tr>
+            <?php if($cjcjDatas):?>
+                <?php foreach($cjcjDatas as $k=>$cjcjData):?>
+                    <tr>
+                        <td><?=$cjcjData[0] ?></td>
+                        <td>
+                            <?php $arrs = explode(",",$cjcjData[1])?>
+                            <div class="number">
+                                <?php foreach($arrs as $arr):?>
+                                    <span><?=sprintf('%02s', $arr)?></span>
+                                <?php endforeach;?>
+                            </div>
+                        </td>
+                        <td><?=$cjcjData[2]?></td>
+                        <td>
+                            <div class="number">
+                                <span><?=$cjcjData[3]?></span>
+                            </div>
+                        </td>
+                        <td><?=$cjcjData[4]?></td>
+                    </tr>
+                <?php endforeach;?>
+            <?php endif;?>
+        </table>
+    </div>
+</div>
+
+<div class="bom-pxd">
+    <div class="container">
+        <div class="bom-pin fl">
+            <h1 class="bom-h1">
+                <span>平台简介</span>
+                <a href="index.php?p=show&c=index&a=ptjjDetail">详情 <em>&gt;</em></a>
+            </h1>
+            <div class="bom-pinimg"><a href=""><img src="public/pk/images/pintai-img_03.jpg"/></a></div>
+            <div class="bom-pintext">
+                <?=substr($jjStr,0,400)?>
+            </div>
+        </div>
+
+        <div class="bom-qiao fl">
+            <h1 class="bom-h1">
+                <span>心得技巧</span>
+                <a href="index.php?p=show&c=index&a=xwlb&leixing=1">更多 <em>&gt;</em></a>
+            </h1>
+            <div class="bom-qiaobiao">
+                <p>教育部：澳洲高校近几年录取要求太水...</p>
+                <span>澳大利亚教育部长10月12日宣布，2018年1月1所有就读“ELICOS”(海外学生英文密集在读.</span>
+            </div>
+            <div class="bom-list">
+                <ul>
+                    <?php if(!empty($xdjqDatas)):?>
+                    <?php foreach($xdjqDatas as $xdjqData):?>
+                    <li><a href="index.php?p=show&c=index&a=xwDetail&id=<?=$xdjqData['id']?>"><em></em><?=$xdjqData["biaoti"]?></a></li>
+                    <?php endforeach;?>
+                    <?php endif;?>
+                </ul>
+            </div>
+        </div>
+        <div class="bom-qiao fr">
+            <h1 class="bom-h1">
+                <span>业界动态</span>
+                <a href="index.php?p=show&c=index&a=xwlb&leixing=2">更多 <em>&gt;</em></a>
+            </h1>
+            <div class="bom-pinimg"><a href="index.php?p=show&c=index&a=xwlb&leixing=2"><img src="public/pk/images/pintai-img_03.jpg"/></a></div>
+            <div class="bom-list">
+                <ul>
+                    <?php if(!empty($yjdtDatas)):?>
+                    <?php foreach($yjdtDatas as $yjdtData):?>
+                    <li><a href="index.php?p=show&c=index&a=xwDetail&id=<?=$yjdtData['id']?>"><em></em><?=$yjdtData["biaoti"]?></a></li>
+                    <?php endforeach;?>
+                    <?php endif;?>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--footer-->
+<div class="footer box">
+    <div class="container">
+        <p>温馨提醒：购买彩票有风险，在线投注须谨慎 不向未满18周岁的青少年出售彩票</p>
+        <p>Copyright &#169; 2017-2018www.PK10.com All Rights Reserved.</p>
+    </div>
+</div>
+
+
+<?php include CUR_VIEW_PATH."Spublic/script.html";?>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+</body>
+</html>

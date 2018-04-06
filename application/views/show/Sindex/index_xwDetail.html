@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<?php include CUR_VIEW_PATH."Spublic/head.html";?>
+<body style="background:#f3f4f7;">
+
+<?php include CUR_VIEW_PATH."Spublic/header.html";?>
+<?php include CUR_VIEW_PATH."Spublic/nav.html";?>
+
+
+
+
+
+<div class="container">
+    <div class="xinwen">
+        <div class="xw-navs fr" style="background:none;">
+            <h2>热门文章</h2>
+            <div class="bom-list">
+                <ul>
+                    <?php if(!empty($hots)):?>
+                    <?php foreach($hots as $hot):?>
+                    <li><a href="index.php?p=show&c=index&a=xwDetail&id=<?=$hot['id']?>"><em></em><?=$hot["biaoti"]?></a></li>
+                    <?php endforeach;?>
+                    <?php endif;?>
+                </ul>
+            </div>
+        </div>
+        <div class="xw-rht fl" style="710px">
+            <div class="mb-nav" style="border:none;">
+                <a href="index.php?p=show&c=index&a=index"><img src="public/pk/images/index_03.png"/>首页</a>
+                <em>&gt;</em>
+                <a href="index.php?p=show&c=index&a=xwlb&leixing=1">新闻</a>
+                <em>&gt;</em>
+                <?=$data["biaoti"]?>
+            </div>
+            <div class="xw-xxti"><?=$data["biaoti"]?></div>
+            <div class="xw-xxtime"><em><?=$data["zuozhe"]?></em> <?=$data["dtime"]?></div>
+            <div class="xw-xxnei">
+                <?=htmlspecialchars_decode($data["neirong"])?>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--footer-->
+<div class="footer box">
+    <div class="container">
+        <p>温馨提醒：购买彩票有风险，在线投注须谨慎 不向未满18周岁的青少年出售彩票</p>
+        <p>Copyright © 2017-2018www.PK10.com All Rights Reserved.</p>
+    </div>
+</div>
+
+
+<?php include CUR_VIEW_PATH."Spublic/script.html";?>
+</body>
+</html>
